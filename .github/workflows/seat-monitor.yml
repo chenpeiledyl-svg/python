@@ -2,69 +2,111 @@ name: Seat Monitor
 
 on:
   schedule:
-    # 每5分钟运行一次 (UTC时间)
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # 允许手动触发
+    # GitHub 只认 UTC。北京时间(UTC+8) 07:30–22:00
+    # ⇒ 前一日 23:30 UTC 到当日 14:00 UTC。
+    # 拆成两段：00:00–14:55 与 23:30–23:55，每 5 分钟触发
+    - cron: '*/5 0-14 * * *'       # 00:00–14:59 UTC
+    - cron: '30-59/5 23 * * *'     # 23:30, 23:35, …, 23:55 UTC
+  workflow_dispatch: {}             # 允许手动触发
 
 permissions:
   contents: write
 
+concurrency:
+  group: seat-monitor
+  cancel-in-progress: true    # 防止定时器重叠运行
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 15
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-      
+        fetch-depth: 0
+
+    # 保险：即使被手动触发，也只在北京时间窗口内继续执行
+    - name: Check Beijing-time window (07:30–22:00)
+      id: window
+      shell: bash
+      run: |
+        now=$(TZ=Asia/Shanghai date +%H:%M)
+        echo "Now(CST)=$now"
+        if [[ "$now" < "07:30" || "$now" > "22:00" ]]; then
+          echo "in_window=false" >> $GITHUB_OUTPUT
+          echo "⏭️  Not in window, skipping."
+        else
+          echo "in_window=true" >> $GITHUB_OUTPUT
+          echo "✅ In window."
+        fi
+
     - name: Set up Python
+      if: steps.window.outputs.in_window == 'true'
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-        
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wget unzip
-        
-    - name: Install Chrome
-      run: |
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-        
+
+    - name: Cache pip
+      if: steps.window.outputs.in_window == 'true'
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: ${{ runner.os }}-pip-
+
+    # 如果 sq.py 不用浏览器，推荐删掉下面两步；需要时再打开
+    # - name: Install system dependencies
+    #   if: steps.window.outputs.in_window == 'true'
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y wget unzip
+    #
+    # - name: Install Chrome
+    #   if: steps.window.outputs.in_window == 'true'
+    #   run: |
+    #     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    #     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    #     sudo apt-get update
+    #     sudo apt-get install -y google-chrome-stable
+
     - name: Install Python dependencies
+      if: steps.window.outputs.in_window == 'true'
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Run seat monitor
+      if: steps.window.outputs.in_window == 'true'
       run: |
-        echo "开始运行座位监控 - $(date)"
+        echo "开始运行座位监控 - $(TZ=Asia/Shanghai date)"
         python sq.py $(date +%Y-%m-%d)
-        echo "监控完成 - $(date)"
-        
+        echo "监控完成 - $(TZ=Asia/Shanghai date)"
+
     - name: Show log if exists
+      if: steps.window.outputs.in_window == 'true'
       run: |
         if [ -f "seat_monitor.log" ]; then
           echo "=== 最新日志 ==="
           tail -20 seat_monitor.log
         fi
-        
-    - name: Commit and push changes
+
+    - name: Commit and push changes (skip empty)
+      if: steps.window.outputs.in_window == 'true'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add *.csv *.log
+        # 仅添加可能更新的文件，避免把无关新文件意外提交
+        git add -A *.csv *.log 2>/dev/null || true
+        # 空变更则跳过
         if git diff --staged --quiet; then
-          echo "没有新的数据变更"
-        else
-          git commit -m "📊 座位数据更新 $(date '+%Y-%m-%d %H:%M UTC')"
-          git push
-          echo "数据已提交到仓库"
+          echo "没有新的数据变更，跳过提交"
+          exit 0
         fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git commit -m "📊 座位数据更新 $(date -u '+%Y-%m-%d %H:%M UTC')"
+        git push
+        echo "数据已提交到仓库"
