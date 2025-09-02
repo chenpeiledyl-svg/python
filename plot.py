@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-读取座位数据CSV并绘制“剩余空间(AvailableSpace)”折线图。
+读取座位数据CSV并绘制"剩余空间(AvailableSpace)"折线图。
 - X 轴：当天从 00:00 起算的分钟数（同时显示成 HH:MM 刻度）
 - Y 轴：AvailableSpace
-- 按 name 分组绘制多条折线（例如 A区、B区、C区）
+- 按 id 分组绘制多条折线（例如不同区域的ID）
 
 用法示例：
   python plot_available_space.py data.csv
@@ -21,19 +21,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator, FuncFormatter
 
 def pick_chinese_font():
-    """尽量设置中文字体（在没有中文字体的环境下也能退化运行）"""
+    """设置字体参数（简化处理，主要解决负号显示问题）"""
     try:
-        from matplotlib import font_manager
-        # 常见中文字体候选
-        candidates = [
-            "SimHei", "Microsoft YaHei", "Noto Sans CJK SC",
-            "Source Han Sans SC", "WenQuanYi Zen Hei", "PingFang SC"
-        ]
-        installed = {f.name for f in font_manager.fontManager.ttflist}
-        for name in candidates:
-            if name in installed:
-                plt.rcParams["font.sans-serif"] = [name]
-                break
         # 解决负号显示问题
         plt.rcParams["axes.unicode_minus"] = False
     except Exception:
@@ -74,22 +63,22 @@ def load_data(path: str) -> pd.DataFrame:
     df["minute"] = pd.to_numeric(df["minute"], errors="coerce")
     df["AvailableSpace"] = pd.to_numeric(df["AvailableSpace"], errors="coerce")
     df = df.dropna(subset=["minute", "AvailableSpace"])
-    df = df.sort_values(["name", "minute"])
+    df = df.sort_values(["id", "minute"])
     return df
 
 def plot_available_space(df: pd.DataFrame, out_png: str = "available_space.png"):
     pick_chinese_font()
 
-    # 透视为宽表：index=minute, columns=name, values=AvailableSpace
-    wide = df.pivot_table(index="minute", columns="name", values="AvailableSpace", aggfunc="last")
+    # 透视为宽表：index=minute, columns=id, values=AvailableSpace
+    wide = df.pivot_table(index="minute", columns="id", values="AvailableSpace", aggfunc="last")
     wide = wide.sort_index()
 
     fig, ax = plt.subplots(figsize=(10, 5), dpi=150)
     wide.plot(ax=ax, marker="o", linewidth=1.8, markersize=3)  # 默认配色即可
 
-    ax.set_title("各区剩余空间（AvailableSpace）随时间变化")
-    ax.set_xlabel("时间（当天分钟数 / HH:MM）")
-    ax.set_ylabel("剩余空间")
+    ax.set_title("Available Space by Area ID Over Time")
+    ax.set_xlabel("Time (Minutes from 00:00 / HH:MM)")
+    ax.set_ylabel("Available Space")
 
     # X 轴整数刻度 + 同时显示 HH:MM 标签（稀疏显示，避免拥挤）
     ax.xaxis.set_major_locator(MaxNLocator(nbins=10, integer=True))
@@ -98,7 +87,7 @@ def plot_available_space(df: pd.DataFrame, out_png: str = "available_space.png")
     ax.xaxis.set_major_formatter(FuncFormatter(dual_label))
 
     ax.grid(True, linestyle="--", alpha=0.3)
-    ax.legend(title="区域（name）", loc="best", fontsize=9)
+    ax.legend(title="Area ID", loc="best", fontsize=9)
 
     plt.tight_layout()
     fig.savefig(out_png, bbox_inches="tight")
