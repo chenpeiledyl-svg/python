@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: seat-monitor
-  cancel-in-progress: true    # 防止定时器重叠运行
+  #cancel-in-progress: true    # 防止定时器重叠运行
 
 jobs:
   monitor:
