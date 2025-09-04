@@ -6033,3 +6033,8 @@
 2025-09-04 11:50:44,967 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2025-09-04
 2025-09-04 11:50:53,338 - INFO - 成功获取session cookies: ['redirect_url', 'PHPSESSID']
 2025-09-04 11:50:56,207 - ERROR - 使用selenium session仍然失败: API访问失败: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)
+2025-09-04 11:52:27,976 - INFO - 开始监控座位数据 - 日期: 2025-09-04
+2025-09-04 11:52:29,542 - INFO - 请求API: http://libzw.csu.edu.cn/api.php/v3areas/95
+2025-09-04 11:52:30,314 - INFO - 成功获取数据 - 总座位: 292, 可用: 49, 区域数: 3
+2025-09-04 11:52:30,314 - INFO - 数据已追加到 2025-09-04.csv, 共3条记录
+2025-09-04 11:52:30,314 - INFO - 数据处理完成
