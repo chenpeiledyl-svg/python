@@ -33941,3 +33941,23 @@
 2025-09-17 06:45:16,401 - INFO - 成功获取数据 - 总座位: 292, 可用: 0, 区域数: 3
 2025-09-17 06:45:16,401 - INFO - 数据已追加到 2025-09-17.csv, 共3条记录
 2025-09-17 06:45:16,401 - INFO - 数据处理完成
+2025-09-17 06:47:00,824 - INFO - 开始监控座位数据 - 日期: 2025-09-17
+2025-09-17 06:47:11,106 - WARNING - 无cookies访问失败: API访问失败: HTTPConnectionPool(host='libzw.csu.edu.cn', port=80): Max retries exceeded with url: /api.php/v3areas/95 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7ff05af5f040>, 'Connection to libzw.csu.edu.cn timed out. (connect timeout=10)'))
+2025-09-17 06:47:11,106 - INFO - 尝试使用selenium获取有效session
+2025-09-17 06:47:11,107 - INFO - ====== WebDriver manager ======
+2025-09-17 06:47:12,341 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-17 06:47:12,428 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-17 06:47:12,509 - INFO - There is no [linux64] chromedriver "140.0.7339.82" for browser google-chrome "140.0.7339" in cache
+2025-09-17 06:47:12,510 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-17 06:47:12,731 - INFO - WebDriver version 140.0.7339.82 selected
+2025-09-17 06:47:12,735 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/linux64/chromedriver-linux64.zip
+2025-09-17 06:47:12,736 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.82/linux64/chromedriver-linux64.zip
+2025-09-17 06:47:12,808 - INFO - Driver downloading response is 200
+2025-09-17 06:47:12,917 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-17 06:47:13,111 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/140.0.7339.82]
+2025-09-17 06:47:41,803 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2025-09-17
+2025-09-17 06:47:48,991 - INFO - 成功获取session cookies: ['redirect_url', 'PHPSESSID']
+2025-09-17 06:47:50,426 - INFO - 请求API: http://libzw.csu.edu.cn/api.php/v3areas/95
+2025-09-17 06:47:50,788 - INFO - 成功获取数据 - 总座位: 292, 可用: 1, 区域数: 3
+2025-09-17 06:47:50,789 - INFO - 数据已追加到 2025-09-17.csv, 共3条记录
+2025-09-17 06:47:50,789 - INFO - 数据处理完成
