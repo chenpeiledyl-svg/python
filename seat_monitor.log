@@ -39373,3 +39373,20 @@
 2025-09-19 13:25:14,481 - INFO - 成功获取数据 - 总座位: 292, 可用: 116, 区域数: 3
 2025-09-19 13:25:14,481 - INFO - 数据已追加到 2025-09-19.csv, 共3条记录
 2025-09-19 13:25:14,481 - INFO - 数据处理完成
+2025-09-19 13:27:10,839 - INFO - 开始监控座位数据 - 日期: 2025-09-19
+2025-09-19 13:27:25,977 - WARNING - 无cookies访问失败: API访问失败: HTTPConnectionPool(host='libzw.csu.edu.cn', port=80): Read timed out.
+2025-09-19 13:27:25,977 - INFO - 尝试使用selenium获取有效session
+2025-09-19 13:27:25,977 - INFO - ====== WebDriver manager ======
+2025-09-19 13:27:27,384 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-19 13:27:27,424 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-19 13:27:27,457 - INFO - There is no [linux64] chromedriver "140.0.7339.185" for browser google-chrome "140.0.7339" in cache
+2025-09-19 13:27:27,457 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-19 13:27:27,565 - INFO - WebDriver version 140.0.7339.185 selected
+2025-09-19 13:27:27,569 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.185/linux64/chromedriver-linux64.zip
+2025-09-19 13:27:27,569 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.185/linux64/chromedriver-linux64.zip
+2025-09-19 13:27:27,615 - INFO - Driver downloading response is 200
+2025-09-19 13:27:27,695 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-19 13:27:27,841 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/140.0.7339.185]
+2025-09-19 13:27:35,376 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2025-09-19
+2025-09-19 13:29:35,455 - ERROR - selenium获取session失败: HTTPConnectionPool(host='localhost', port=49117): Read timed out. (read timeout=120)
+2025-09-19 13:29:35,455 - ERROR - selenium获取session失败
