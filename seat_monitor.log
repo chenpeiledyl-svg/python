@@ -44011,3 +44011,20 @@
 2025-09-22 02:09:04,676 - INFO - 成功获取数据 - 总座位: 292, 可用: 52, 区域数: 3
 2025-09-22 02:09:04,676 - INFO - 数据已追加到 2025-09-22.csv, 共3条记录
 2025-09-22 02:09:04,677 - INFO - 数据处理完成
+2025-09-22 02:11:00,676 - INFO - 开始监控座位数据 - 日期: 2025-09-22
+2025-09-22 02:11:15,698 - WARNING - 无cookies访问失败: API访问失败: HTTPConnectionPool(host='libzw.csu.edu.cn', port=80): Max retries exceeded with url: /api.php/v3areas/95 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f68a7a30040>: Failed to resolve 'libzw.csu.edu.cn' ([Errno -3] Temporary failure in name resolution)"))
+2025-09-22 02:11:15,698 - INFO - 尝试使用selenium获取有效session
+2025-09-22 02:11:15,698 - INFO - ====== WebDriver manager ======
+2025-09-22 02:11:16,935 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-22 02:11:17,050 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-22 02:11:17,115 - INFO - There is no [linux64] chromedriver "140.0.7339.185" for browser google-chrome "140.0.7339" in cache
+2025-09-22 02:11:17,115 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-22 02:11:17,330 - INFO - WebDriver version 140.0.7339.185 selected
+2025-09-22 02:11:17,335 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.185/linux64/chromedriver-linux64.zip
+2025-09-22 02:11:17,335 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.185/linux64/chromedriver-linux64.zip
+2025-09-22 02:11:17,429 - INFO - Driver downloading response is 200
+2025-09-22 02:11:17,641 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-22 02:11:17,858 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/140.0.7339.185]
+2025-09-22 02:11:23,195 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2025-09-22
+2025-09-22 02:13:23,296 - ERROR - selenium获取session失败: HTTPConnectionPool(host='localhost', port=38751): Read timed out. (read timeout=120)
+2025-09-22 02:13:23,296 - ERROR - selenium获取session失败
