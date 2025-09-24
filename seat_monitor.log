@@ -50000,3 +50000,23 @@
 2025-09-24 23:46:44,209 - INFO - 成功获取数据 - 总座位: 292, 可用: 170, 区域数: 3
 2025-09-24 23:46:44,210 - INFO - 数据已追加到 2025-09-24.csv, 共3条记录
 2025-09-24 23:46:44,210 - INFO - 数据处理完成
+2025-09-24 23:49:59,800 - INFO - 开始监控座位数据 - 日期: 2025-09-24
+2025-09-24 23:50:02,155 - WARNING - 无cookies访问失败: API访问失败: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)
+2025-09-24 23:50:02,155 - INFO - 尝试使用selenium获取有效session
+2025-09-24 23:50:02,156 - INFO - ====== WebDriver manager ======
+2025-09-24 23:50:04,188 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-24 23:50:04,277 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-24 23:50:04,361 - INFO - There is no [linux64] chromedriver "140.0.7339.207" for browser google-chrome "140.0.7339" in cache
+2025-09-24 23:50:04,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-24 23:50:04,579 - INFO - WebDriver version 140.0.7339.207 selected
+2025-09-24 23:50:04,583 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.207/linux64/chromedriver-linux64.zip
+2025-09-24 23:50:04,584 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/140.0.7339.207/linux64/chromedriver-linux64.zip
+2025-09-24 23:50:04,652 - INFO - Driver downloading response is 200
+2025-09-24 23:50:04,754 - INFO - Get LATEST chromedriver version for google-chrome
+2025-09-24 23:50:04,947 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/140.0.7339.207]
+2025-09-24 23:50:14,650 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2025-09-24
+2025-09-24 23:50:20,260 - INFO - 成功获取session cookies: ['redirect_url', 'PHPSESSID']
+2025-09-24 23:50:21,482 - INFO - 请求API: http://libzw.csu.edu.cn/api.php/v3areas/95
+2025-09-24 23:50:21,861 - INFO - 成功获取数据 - 总座位: 292, 可用: 166, 区域数: 3
+2025-09-24 23:50:21,861 - INFO - 数据已追加到 2025-09-24.csv, 共3条记录
+2025-09-24 23:50:21,861 - INFO - 数据处理完成
