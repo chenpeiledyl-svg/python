@@ -150905,3 +150905,22 @@
 2026-08-20 13:22:55,071 - INFO - 成功获取数据 - 总座位: 292, 可用: 99, 区域数: 3
 2026-08-20 13:22:55,071 - INFO - 数据已追加到 2026-08-20.csv, 共3条记录
 2026-08-20 13:22:55,071 - INFO - 数据处理完成
+2026-08-20 23:53:42,671 - INFO - 开始监控座位数据 - 日期: 2026-08-20
+2026-08-20 23:53:54,003 - WARNING - 无cookies访问失败: API访问失败: HTTPConnectionPool(host='libzw.csu.edu.cn', port=80): Read timed out.
+2026-08-20 23:53:54,003 - INFO - 尝试使用selenium获取有效session
+2026-08-20 23:53:54,003 - INFO - ====== WebDriver manager ======
+2026-08-20 23:53:55,864 - INFO - Get LATEST chromedriver version for google-chrome
+2026-08-20 23:53:55,905 - INFO - There is no [linux64] chromedriver "151.0.7922.138" for browser google-chrome "151.0.7922" in cache
+2026-08-20 23:53:55,947 - INFO - There is no [linux64] chromedriver "151.0.7922.138" for browser google-chrome "151.0.7922" in cache
+2026-08-20 23:53:55,947 - INFO - Get LATEST chromedriver version for google-chrome
+2026-08-20 23:53:56,064 - INFO - WebDriver version 151.0.7922.138 selected
+2026-08-20 23:53:56,071 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/linux64/chromedriver-linux64.zip
+2026-08-20 23:53:56,071 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/151.0.7922.138/linux64/chromedriver-linux64.zip
+2026-08-20 23:53:56,131 - INFO - Driver downloading response is 200
+2026-08-20 23:53:56,317 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/151.0.7922.138]
+2026-08-20 23:54:01,589 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2026-08-20
+2026-08-20 23:54:07,142 - INFO - 成功获取session cookies: ['PHPSESSID', 'redirect_url']
+2026-08-20 23:54:08,836 - INFO - 请求API: http://libzw.csu.edu.cn/api.php/v3areas/95
+2026-08-20 23:54:09,634 - INFO - 成功获取数据 - 总座位: 292, 可用: 211, 区域数: 3
+2026-08-20 23:54:09,635 - INFO - 数据已追加到 2026-08-20.csv, 共3条记录
+2026-08-20 23:54:09,635 - INFO - 数据处理完成
