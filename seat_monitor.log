@@ -153626,3 +153626,19 @@
 2026-10-05 05:27:46,351 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2026-10-05
 2026-10-05 05:27:49,988 - INFO - 成功获取session cookies: ['PHPSESSID']
 2026-10-05 05:27:52,358 - ERROR - 使用selenium session仍然失败: API返回异常: 404
+2026-10-05 12:34:26,538 - INFO - 开始监控座位数据 - 日期: 2026-10-05
+2026-10-05 12:34:31,575 - WARNING - 无cookies访问失败: API返回异常: 404
+2026-10-05 12:34:31,575 - INFO - 尝试使用selenium获取有效session
+2026-10-05 12:34:31,576 - INFO - ====== WebDriver manager ======
+2026-10-05 12:34:33,925 - INFO - Get LATEST chromedriver version for google-chrome
+2026-10-05 12:34:33,977 - INFO - There is no [linux64] chromedriver "154.0.8037.92" for browser google-chrome "154.0.8037" in cache
+2026-10-05 12:34:34,019 - INFO - There is no [linux64] chromedriver "154.0.8037.92" for browser google-chrome "154.0.8037" in cache
+2026-10-05 12:34:34,019 - INFO - Get LATEST chromedriver version for google-chrome
+2026-10-05 12:34:34,135 - INFO - WebDriver version 154.0.8037.92 selected
+2026-10-05 12:34:34,141 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/154.0.8037.92/linux64/chromedriver-linux64.zip
+2026-10-05 12:34:34,141 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/154.0.8037.92/linux64/chromedriver-linux64.zip
+2026-10-05 12:34:34,226 - INFO - Driver downloading response is 200
+2026-10-05 12:34:34,652 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/154.0.8037.92]
+2026-10-05 12:34:41,322 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2026-10-05
+2026-10-05 12:34:45,167 - INFO - 成功获取session cookies: ['PHPSESSID']
+2026-10-05 12:34:47,812 - ERROR - 使用selenium session仍然失败: API返回异常: 404
