@@ -154042,3 +154042,19 @@
 2026-10-14 04:45:32,128 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2026-10-14
 2026-10-14 04:47:32,215 - ERROR - selenium获取session失败: HTTPConnectionPool(host='localhost', port=57631): Read timed out. (read timeout=120)
 2026-10-14 04:47:32,216 - ERROR - selenium获取session失败
+2026-10-14 09:49:40,723 - INFO - 开始监控座位数据 - 日期: 2026-10-14
+2026-10-14 09:49:52,365 - WARNING - 无cookies访问失败: API访问失败: HTTPConnectionPool(host='libzw.csu.edu.cn', port=80): Max retries exceeded with url: /api.php/v3areas/95 (Caused by ConnectTimeoutError(<HTTPConnection(host='libzw.csu.edu.cn', port=80) at 0x7f6fda6e9640>, 'Connection to libzw.csu.edu.cn timed out. (connect timeout=10)'))
+2026-10-14 09:49:52,365 - INFO - 尝试使用selenium获取有效session
+2026-10-14 09:49:52,366 - INFO - ====== WebDriver manager ======
+2026-10-14 09:49:52,591 - INFO - Get LATEST chromedriver version for google-chrome
+2026-10-14 09:49:52,650 - INFO - There is no [linux64] chromedriver "154.0.8037.92" for browser google-chrome "154.0.8037" in cache
+2026-10-14 09:49:52,693 - INFO - There is no [linux64] chromedriver "154.0.8037.92" for browser google-chrome "154.0.8037" in cache
+2026-10-14 09:49:52,694 - INFO - Get LATEST chromedriver version for google-chrome
+2026-10-14 09:49:52,838 - INFO - WebDriver version 154.0.8037.92 selected
+2026-10-14 09:49:52,846 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/154.0.8037.92/linux64/chromedriver-linux64.zip
+2026-10-14 09:49:52,847 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/154.0.8037.92/linux64/chromedriver-linux64.zip
+2026-10-14 09:49:52,921 - INFO - Driver downloading response is 200
+2026-10-14 09:49:53,152 - INFO - Driver has been saved in cache [/home/runner/.wdm/drivers/chromedriver/linux64/154.0.8037.92]
+2026-10-14 09:49:54,047 - INFO - 使用selenium访问: http://libzw.csu.edu.cn/web/seat2/area/95/day/2026-10-14
+2026-10-14 09:51:54,127 - ERROR - selenium获取session失败: HTTPConnectionPool(host='localhost', port=43681): Read timed out. (read timeout=120)
+2026-10-14 09:51:54,127 - ERROR - selenium获取session失败
